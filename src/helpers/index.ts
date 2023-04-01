@@ -10,11 +10,12 @@ try {
     redisClient = await redisConnect({
         hostname: REDIS_HOST || '127.0.0.1',
         port: 6379,
-       });
+    });
+    console.log(REDIS_HOST, await redisClient.ping());
 }catch(e) {
     console.log("connection failed", e)
 }
 
-console.log(REDIS_HOST, await redisClient.ping());
+
 
 export { redisClient };
