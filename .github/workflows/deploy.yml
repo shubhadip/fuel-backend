@@ -23,6 +23,9 @@ jobs:
         uses: supercharge/redis-github-action@1.5.0
         with:
           redis-version: ${{matrix.redis-version}}
+      
+      - name: Restart redis
+        run: systemctl start redis-server
       # TODO: add a build step here
 
       - name: Upload to Deno Deploy
