@@ -19,14 +19,6 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
-      - name: Start Redis
-        uses: supercharge/redis-github-action@1.5.0
-        with:
-          redis-version: ${{matrix.redis-version}}
-      
-      - name: Restart redis
-        run: redis-cli ping
-
       # TODO: add a build step here
 
       - name: Upload to Deno Deploy
