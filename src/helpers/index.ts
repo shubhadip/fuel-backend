@@ -8,7 +8,7 @@ let redisClient;
 
 try {
     redisClient = await redisConnect({
-        hostname: REDIS_HOST || '127.0.0.1',
+        hostname: 'localhost' || '127.0.0.1',
         port: 6379,
     });
     console.log(REDIS_HOST, await redisClient.ping());
