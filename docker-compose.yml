@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web: 
+      build: .
+      env_file:
+        - .env.production
+      container_name: fuel-backend
+      image: fuel-backend
+      ports:
+        - 8000:8000
+  redis:
+    image: redis
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    ports:
+      - "6379:6379"

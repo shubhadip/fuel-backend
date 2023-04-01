@@ -466,7 +466,8 @@ indianoilRoutes.post("/getNearByPumpDetails", async (context) => {
 	redisClient.setex(cacheKey, 14400, JSON.stringify(allValues));
 
 	context.response.body = {
-		...apibackendresponse
+		...apibackendresponse,
+		"newsetup":true
 	};
 
 	context.response.status = Status.OK;
