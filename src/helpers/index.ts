@@ -4,10 +4,16 @@ import { redisConnect } from '../../deps.ts';
 
 const REDIS_HOST = Deno.env.get("REDIS_HOST");
 
-const redisClient = await redisConnect({
- hostname: REDIS_HOST || '127.0.0.1',
- port: 6379,
-});
+let redisClient;
+
+try {
+    redisClient = await redisConnect({
+        hostname: REDIS_HOST || '127.0.0.1',
+        port: 6379,
+       });
+}catch(e) {
+    console.log("connection failed", e)
+}
 
 console.log(REDIS_HOST, await redisClient.ping());
 
