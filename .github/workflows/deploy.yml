@@ -8,6 +8,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        redis-version: [4, 5, 6]
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
@@ -16,6 +19,10 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
+      - name: Start Redis
+        uses: supercharge/redis-github-actions@1.5.0
+        with:
+          redis-version: ${{matrix.redis-version}}
       # TODO: add a build step here
 
       - name: Upload to Deno Deploy
