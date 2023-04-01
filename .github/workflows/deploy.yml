@@ -22,4 +22,4 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "shubhadip-fuel-backend"
-          entrypoint: "./server.ts" # TODO: update entrypoint
+          entrypoint: " --allow-net --allow-read --allow-env ./server.ts" # TODO: update entrypoint
