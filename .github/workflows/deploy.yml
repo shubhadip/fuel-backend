@@ -25,7 +25,7 @@ jobs:
           redis-version: ${{matrix.redis-version}}
       
       - name: Restart redis
-        run: redis-server --daemonize yes
+        run: redis-cli ping
 
       # TODO: add a build step here
 
