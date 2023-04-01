@@ -25,7 +25,8 @@ jobs:
           redis-version: ${{matrix.redis-version}}
       
       - name: Restart redis
-        run: systemctl start redis-server
+        run: redis-server --daemonize yes
+
       # TODO: add a build step here
 
       - name: Upload to Deno Deploy
